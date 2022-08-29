@@ -1,5 +1,7 @@
 import Pokecard from './Pokecard'
 
+import "./Pokedex.css"
+
 let pocketMonsters = [
   {id: 4,   name: 'Charmander', type: 'fire',     base_experience: 62},
   {id: 7,   name: 'Squirtle',   type: 'water',    base_experience: 63},
@@ -11,13 +13,17 @@ let pocketMonsters = [
   {id: 133, name: 'Eevee',      type: 'normal',   base_experience: 65}
 ];
 
-function Pokedex({pokedex = pocketMonsters}){
+function Pokedex({pokedex = pocketMonsters, totalExperience, isWinner=false}){
   //loop thru pokedex and display each item by calling pokecard
   return (
-    <div>
+    <div className='Pokedex'>
       {pokedex.map(p => <span>
         <Pokecard id={p.id} name={p.name} type= {p.type} exp={p.base_experience}/>
         </span>)}
+      <h4>
+        Total Experience: {totalExperience}
+      </h4>
+      {isWinner ? <h4>THIS HAND WINS!</h4> : null}
     </div>
   )
 }
